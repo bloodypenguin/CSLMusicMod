@@ -50,33 +50,23 @@
     </CustomCommands>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\..\..\run\media\ruman\3ed06029-b479-4349-a125-a8c07ee0dad5\ruman\SteamLibrary\steamapps\common\Cities_Skylines\Cities_Data\Managed\Assembly-CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="ColossalManaged, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\..\..\run\media\ruman\3ed06029-b479-4349-a125-a8c07ee0dad5\ruman\SteamLibrary\steamapps\common\Cities_Skylines\Cities_Data\Managed\ColossalManaged.dll</HintPath>
-    </Reference>
-    <Reference Include="ICities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\..\..\run\media\ruman\3ed06029-b479-4349-a125-a8c07ee0dad5\ruman\SteamLibrary\steamapps\common\Cities_Skylines\Cities_Data\Managed\ICities.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\..\..\..\..\home\ruman\.local\share\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="ICities">
-      <HintPath>..\..\..\..\..\..\..\..\home\ruman\.local\share\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\ICities.dll</HintPath>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>C:\Games\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="ColossalManaged">
-      <HintPath>..\..\..\..\..\..\..\..\home\ruman\.local\share\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\ColossalManaged.dll</HintPath>
+      <HintPath>C:\Games\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\ColossalManaged.dll</HintPath>
     </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\..\..\..\..\home\ruman\.local\share\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\Assembly-CSharp.dll</HintPath>
+    <Reference Include="ICities">
+      <HintPath>C:\Games\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\ICities.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>C:\Games\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\Steam.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>C:\Games\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="System.Core">
-      <HintPath>..\..\..\..\..\..\..\..\home\ruman\.local\share\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\System.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\..\..\run\media\ruman\3ed06029-b479-4349-a125-a8c07ee0dad5\ruman\SteamLibrary\steamapps\common\Cities_Skylines\Cities_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>C:\Games\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\System.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -137,4 +127,10 @@
     <EmbeddedResource Include="thumbnail_mix.png" />
     <EmbeddedResource Include="thumbnail_package.png" />
   </ItemGroup>
+    <PropertyGroup>
+    <PostBuildEvent>mkdir "$(LOCALAPPDATA)\Colossal Order\Cities_Skylines\Addons\Mods\$(ProjectName)"
+del "$(LOCALAPPDATA)\Colossal Order\Cities_Skylines\Addons\Mods\$(ProjectName)\$(TargetFileName)"
+xcopy /y "$(TargetPath)" "$(LOCALAPPDATA)\Colossal Order\Cities_Skylines\Addons\Mods\$(ProjectName)"
+</PostBuildEvent>
+  </PropertyGroup>
 </Project>
