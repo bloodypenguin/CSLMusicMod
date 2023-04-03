@@ -40,16 +40,16 @@ namespace CSLMusicMod
         public void Install()
         {
             CSLMusicMod.Log("[CSLMusic] Installing detours ...");
-            m_RedirectObtainMusicClip = RedirectionHelper.RedirectCalls(typeof(RadioContentInfo).GetMethod("ObtainClip", BindingFlags.Instance | BindingFlags.Public),
-                typeof(CustomRadioContentInfo).GetMethod("CustomObtainClip", BindingFlags.Instance | BindingFlags.Public));
-            m_RedirectStationName = RedirectionHelper.RedirectCalls(typeof(RadioChannelInfo).GetMethod("GetLocalizedTitle", BindingFlags.Instance | BindingFlags.Public),
-                typeof(CustomRadioChannelInfo).GetMethod("CustomGetLocalizedTitle", BindingFlags.Instance | BindingFlags.Public));
+            m_RedirectObtainMusicClip = RedirectionHelper.RedirectCalls(typeof(RadioContentInfo).GetMethod(nameof(RadioContentInfo.ObtainClip), BindingFlags.Instance | BindingFlags.Public),
+                typeof(CustomRadioContentInfo).GetMethod(nameof(CustomRadioContentInfo.CustomObtainClip), BindingFlags.Instance | BindingFlags.Public));
+            m_RedirectStationName = RedirectionHelper.RedirectCalls(typeof(RadioChannelInfo).GetMethod(nameof(RadioContentInfo.GetLocalizedTitle), BindingFlags.Instance | BindingFlags.Public),
+                typeof(CustomRadioChannelInfo).GetMethod(nameof(CustomRadioChannelInfo.CustomGetLocalizedTitle), BindingFlags.Instance | BindingFlags.Public));
             m_RedirectRadioPanelButtonGeneration = RedirectionHelper.RedirectCalls(typeof(RadioPanel).GetMethod("AssignStationToButton", BindingFlags.Instance | BindingFlags.NonPublic),
-                typeof(CustomRadioPanel).GetMethod("CustomAssignStationToButton", BindingFlags.Instance | BindingFlags.NonPublic));
-            m_RedirectAudioManagerQueueBroadcast = RedirectionHelper.RedirectCalls(typeof(AudioManager).GetMethod("QueueBroadcast", BindingFlags.Instance | BindingFlags.Public),
-                typeof(CustomAudioManager).GetMethod("CustomQueueBroadcast", BindingFlags.Instance | BindingFlags.Public));
-			m_RedirectAudioManagerCollectRadioContentInfo = RedirectionHelper.RedirectCalls(typeof(AudioManager).GetMethod("CollectRadioContentInfo", BindingFlags.Instance | BindingFlags.Public),
-				typeof(CustomAudioManager).GetMethod("CustomCollectRadioContentInfo", BindingFlags.Instance | BindingFlags.Public));
+                typeof(CustomRadioPanel).GetMethod(nameof(CustomRadioPanel.CustomAssignStationToButton), BindingFlags.Instance | BindingFlags.Public));
+            m_RedirectAudioManagerQueueBroadcast = RedirectionHelper.RedirectCalls(typeof(AudioManager).GetMethod(nameof(AudioManager.QueueBroadcast), BindingFlags.Instance | BindingFlags.Public),
+                typeof(CustomAudioManager).GetMethod(nameof(CustomAudioManager.CustomQueueBroadcast), BindingFlags.Instance | BindingFlags.Public));
+			m_RedirectAudioManagerCollectRadioContentInfo = RedirectionHelper.RedirectCalls(typeof(AudioManager).GetMethod(nameof(AudioManager.CollectRadioContentInfo), BindingFlags.Instance | BindingFlags.Public),
+				typeof(CustomAudioManager).GetMethod(nameof(CustomAudioManager.CustomCollectRadioContentInfo), BindingFlags.Instance | BindingFlags.Public));
         }
 
         public void Uninstall()

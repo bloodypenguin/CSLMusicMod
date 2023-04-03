@@ -125,7 +125,7 @@ namespace CSLMusicMod
         /// </summary>
         /// <param name="button">Button.</param>
         /// <param name="station">Station.</param>
-        private void CustomAssignStationToButton(UIButton button, RadioChannelInfo station)
+        public void CustomAssignStationToButton(UIButton button, RadioChannelInfo station)
         {       
             UserRadioCollection collection = LoadingExtension.UserRadioContainer;
 	        UISprite iconsprite = button.Find<UISprite>("sprite");
